@@ -1,0 +1,41 @@
+services:
+
+  onedev:
+    image: 1dev/server:latest
+    container_name: onedev
+    hostname: onedev
+    restart: unless-stopped
+    ports:
+      - 6610:6610/tcp
+    expose:
+      - 6610
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      -  ${DOCKER_VOLUME_STORAGE:-/mnt/docker-volumes}/onedev:/opt/onedev
+    environment:
+      - initial_user=${INITIAL_USER}
+      - initial_password=${INITIAL_PASSWORD}
+      - initial_email=${INITIAL_EMAIL}
+      - initial_server_url=${INITIAL_SERVER_URL}
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+          cpus: "1.0"
+        reservations:
+          memory: 256m
+
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.onedev.rule=Host(`onedev.example.com`)
+      - traefik.http.services.onedev.loadbalancer.server.port=6610
+      - traefik.docker.network=proxy
+      # Part for optional traefik middlewares
+      - traefik.http.routers.onedev.middlewares=local-ipwhitelist@file,basic-auth@file
+
+networks:
+  proxy:

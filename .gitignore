@@ -1,0 +1,77 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Compilación y caché de Java
+target/
+bin/
+out/
+
+# Archivos de configuración de Maven
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Archivos de configuración de Gradle
+.gradle/
+build/
+
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Configuración del IDE/editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.iml
+
+# Configuración del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de compilación y caché
+dist/
+build/
+.cache/
+.tmp/
+
+# Informes de pruebas y cobertura
+coverage/
+.nyc_output/
+test-results.xml
+mochawesome-report/
+mocha-report/
+
+# Archivos de IntelliJ IDEA
+*.iws
+*.ipr
+*.class
+
+# Archivos generados de Eclipse
+.settings/
+.metadata/
+.recommenders/
+.classpath
+.project
